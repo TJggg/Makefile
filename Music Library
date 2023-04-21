@@ -1,0 +1,38 @@
+class MusicLibrary {
+private:
+    vector<Track> tracks;
+public:
+    void addTrack(Track t) {
+        // Check if track already exists in library
+        for (int i = 0; i < tracks.size(); i++) {
+            if (tracks[i].getTitle() == t.getTitle() && tracks[i].getArtist() == t.getArtist()) {
+                return;
+            }
+        }
+        // Add track to library if not already present
+        tracks.push_back(t);
+    }
+    void removeTrack(string title, string artist) {
+        for (int i = 0; i < tracks.size(); i++) {
+            if (tracks[i].getTitle() == title && tracks[i].getArtist() == artist) {
+                tracks.erase(tracks.begin() + i);
+                return;
+            }
+        }
+    }
+    vector<Track> searchTracksByArtist(string artist) {
+        vector<Track> results;
+        for (int i = 0; i < tracks.size(); i++) {
+            if (tracks[i].getArtist() == artist) {
+                results.push_back(tracks[i]);
+            }
+        }
+        return results;
+    }
+    void loadTracksFromFile(string filename) {
+        // TODO: implement loading tracks from file
+    }
+    void saveTracksToFile(string filename) {
+        // TODO: implement saving tracks to file
+    }
+};
